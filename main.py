@@ -4,8 +4,15 @@ from pydub import AudioSegment
 
 app = Flask(__name__)
 
-file = AudioSegment.from_file("./sound.mp4", format="mp4")
-output = file.export("./output.wav", format="wav")
+
+def messengerClipToWavMac(audioFileName):
+    file = AudioSegment.from_file('/'+audioFileName, format="mp4")
+    output = file.export("/output.wav", format="wav")
+
+
+def messengerClipToWav(audioFileName):
+    file = AudioSegment.from_file('./'+audioFileName, format="mp4")
+    output = file.export("./output.wav", format="wav")
 
 
 @app.route('/test')
