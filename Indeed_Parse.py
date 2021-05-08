@@ -49,15 +49,10 @@ def Find_Job(Job : str,Number_Of_Jobs :int):
 
 
 
-First_Job = Find_Job("Software Engineer",1) 
+##First_Job = Find_Job("Software Engineer",1) 
 
-for i in range(1,7):
-    
-    try:
-        print(Find_Job("Software Engineer", i));
-    except(IndexError):
-        pass
-    ##Use this to skip any Index Errors
+  
+
 
 
 
@@ -70,3 +65,20 @@ for i in range(1,7):
 
 #Tag = First_Job[0].h2.a
 #print(Tag['title'])
+
+
+
+def Find_My_Job(Insert_Job : str):
+    for i in range(1,7):
+        try:
+            print(Find_Job(Insert_Job, i));
+        except(IndexError):
+            pass
+        ##Use this to skip any Index Errors
+       
+
+
+##Find_My_Job("Software Engineer")
+##Find_My_Job("Data Analyst")
+##Find_My_Job("Janitor")
+Find_My_Job("Tutor")
