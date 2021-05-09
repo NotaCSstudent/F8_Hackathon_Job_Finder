@@ -59,9 +59,11 @@ def Find_Job(Job : str,Number_Of_Jobs :int):
 
 
 def Find_My_Job(Insert_Job : str):
+    Job_List = []
     for i in range(1,7):
         try:
-            print(Find_Job(Insert_Job, i));
+            Job_List.append(Find_Job(Insert_Job,i));
+            ##print(Find_Job(Insert_Job, i));
         except(IndexError):
             pass
         ##Use this to skip any Index Errors
