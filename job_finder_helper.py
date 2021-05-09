@@ -63,7 +63,7 @@ def Find_My_Job(Insert_Job : str):
     for i in range(1,7):
         try:
             Job_List.append(Find_Job(Insert_Job,i));
-            ##print(Find_Job(Insert_Job, i));
+            print(Find_Job(Insert_Job, i));
         except(IndexError):
             pass
         ##Use this to skip any Index Errors
