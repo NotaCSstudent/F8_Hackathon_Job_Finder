@@ -1,9 +1,10 @@
-from flask import Flask, request, abort
-from pydub import AudioSegment
-import speech_recognition as sr
-import os
-import json
 import urllib.request
+import json
+import os
+import speech_recognition as sr
+from pydub import AudioSegment
+from flask import Flask, request, abort
+
 
 app = Flask(__name__)
 
