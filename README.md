@@ -9,11 +9,8 @@ and will find the seven most recent job postings on Indeed in New York City and 
 ## Contributors
 
 - [Yash Mahtani](https://github.com/gasperjw1)
-
 - [OminaRU](https://github.com/OminaRU)
-
 - [dev-rb](https://github.com/dev-rb)
-
 - [NotaCSstudent](https://github.com/NotaCSstudent)
 
 ## Requirements
@@ -29,3 +26,7 @@ and will find the seven most recent job postings on Indeed in New York City and 
     ```
     python3 app.py
     ```
+    
+## Commands
+- Once the user says "looking for", our program will take all words until the end or the next stop word 
+    and put it in our we scraper to pull those job listings from Indeed.com
