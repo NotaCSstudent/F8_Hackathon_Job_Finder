@@ -4,6 +4,7 @@ import os
 import speech_recognition as sr
 from pydub import AudioSegment
 from flask import Flask, request, abort
+import "job_finder_helper.py" as jfh
 
 
 app = Flask(__name__)
