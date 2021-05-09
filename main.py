@@ -47,7 +47,9 @@ def handleMessage():
             attachmentUrl = request.json["entry"][0]["messaging"][0]["message"]["attachments"][0]["payload"]["url"]
             urllib.request.urlretrieve(attachmentUrl, "input.mp4")
             messengerClipToWav("input.mp4")
-            jfh.wav2text("output.wav")
+            job = jfh.wav2text("output.wav")
+            jfh.Find_Job(job,0)            
+            
 
         return 'success', 200
     else:
