@@ -1,8 +1,13 @@
 from flask import Flask, request, abort
-from flask_ngrok import run_with_ngrok
 from pydub import AudioSegment
+import speech_recognition as sr
+import os
+import json
+import urllib.request
 
 app = Flask(__name__)
+
+# Install ffmpeg on host/server
 
 
 def messengerClipToWavMac(audioFileName):
@@ -33,7 +38,14 @@ def webhook():
 @app.route('/test', methods=['POST'])
 def handleMessage():
     if request.method == 'POST':
-        print(request.json)
+        # print(request.json)
+        attachmentType = request.json["entry"][0]["messaging"][0]["message"]["attachments"][0]["type"]
+
+        if attachmentType == "audio":
+            attachmentUrl = request.json["entry"][0]["messaging"][0]["message"]["attachments"][0]["payload"]["url"]
+            urllib.request.urlretrieve(attachmentUrl, "input.mp4")
+            messengerClipToWav("input.mp4")
+
         return 'success', 200
     else:
         abort(400)
