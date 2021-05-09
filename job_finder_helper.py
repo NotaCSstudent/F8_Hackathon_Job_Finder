@@ -101,6 +101,7 @@ def wav2txt(audioFileName):
     txtFile = open("audioAsText.txt", "w+")
     txtFile.write(userCommand)
     txtFile.close()
+    return userCommand
 
 
 ## End wav to text
