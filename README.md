@@ -4,17 +4,17 @@ We are creating a job finding application that takes an audio input from the use
     ```
     I am looking for a software engineer job
     ```
-and will find the seven most recent job postings on Indeed in New York City and New Jersey
+and will find the seven most recent job postings on Indeed in New York City and New Jersey.
 
 ## Contributors
 
 - [Yash Mahtani](https://github.com/gasperjw1)
 
-- [OminaRU](htts://github.com/OminaRU)
+- [OminaRU](https://github.com/OminaRU)
 
-- [dev-rb](htts://github.com/dev-rb)
+- [dev-rb](https://github.com/dev-rb)
 
-- [NotaCSstudent](htts://github.com/NotaCSstudent)
+- [NotaCSstudent](https://github.com/NotaCSstudent)
 
 ## Requirements
 
