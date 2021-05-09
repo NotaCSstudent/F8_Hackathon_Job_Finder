@@ -9,9 +9,9 @@ and will find the seven most recent job postings on Indeed in New York City and 
 ## Contributors
 
 - [Yash Mahtani](https://github.com/gasperjw1)
-- [Contributor 2](htts://github/OminaRU)
-- [Contributor 3](htts://github/dev-rb)
-- [Contributor 3](htts://github/NotaCSstudent)
+- [Contributor 2](htts://github.com/OminaRU)
+- [Contributor 3](htts://github.com/dev-rb)
+- [Contributor 3](htts://github.com/NotaCSstudent)
 
 ## Requirements
 
