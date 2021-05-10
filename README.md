@@ -3,6 +3,7 @@
 We are creating a job finding application that takes an audio input from the user, such as:
     ```
     I am looking for a software engineer job
+    I am looking for a Data Analyst Job
     ```
 and will find the seven most recent job postings on Indeed in New York City and New Jersey.
 
@@ -17,7 +18,13 @@ and will find the seven most recent job postings on Indeed in New York City and 
 
 - To build the application, you run the following command to download the necessary packages 
     ```
-    pip3 install Flask SpeechRecogntion
+    pip3 install Flask 
+    pip3 install SpeechRecogntion
+    pip3 install bs4
+    install ngrok
+    install ffmpeg
+    create your own page access token 
+    
     ```
     
 ## Deployment
@@ -25,6 +32,8 @@ and will find the seven most recent job postings on Indeed in New York City and 
 - To run the application, run the following command:
     ```
     python3 main.py
+    
+    
     ```
     
 ## Commands
