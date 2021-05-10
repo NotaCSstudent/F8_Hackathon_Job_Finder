@@ -19,9 +19,12 @@ def sendListOfJobs(recipient_id, text):
     elementsList = []
 
     for i in range(0, 7):
-        newElement = {"title": text[i]["company"],
-                      "subtitle": text[i]["name"] + " - " + text[i]["location"]}
-        elementsList.append(newElement)
+        try:
+            newElement = {"title": text[i]["company"],
+                          "subtitle": text[i]["name"] + " - " + text[i]["location"]}
+            elementsList.append(newElement)
+        except(IndexError):
+            return 400
 
     payload = {
         'recipient': {
