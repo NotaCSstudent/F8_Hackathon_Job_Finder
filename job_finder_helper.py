@@ -90,11 +90,10 @@ def wav2txt(audioFileName):
     with givenAudioFile as srcFile:
         givenAudioFile = reco.record(srcFile)
 
-    userCommand = (reco.recognize_wit(
-        givenAudioFile, "O7NTCSR3OEK6VZOGW4I65N6P5OTKSI3C"))
+    userCommand = reco.recognize_wit(givenAudioFile, "O7NTCSR3OEK6VZOGW4I65N6P5OTKSI3C")
     if userCommand.find(' in') > -1:
-        userCommand = userCommand[(userCommand.find(
-            'looking for ') + 12): (userCommand.find(' in'))]
+        userCommand = userCommand[(userCommand.find('looking for ') + 12):]
+        userCommand = userCommand[:userCommand.find(' in')]
     else:
         userCommand = userCommand[(userCommand.find('looking for ') + 12):]
     if userCommand.find('recent ') > -1:
@@ -105,13 +104,14 @@ def wav2txt(audioFileName):
     txtFile.close()
     return userCommand
 
-
 # End wav to text
-def main():
-    audFile = input("Enter audio file name: ")
-
-    wav2txt(audFile)
 
 
-if __name__ == "__main__":
-    main()
+# def main():
+#     audFile = input("Enter audio file name: ")
+
+#     wav2txt(audFile)
+
+
+# if __name__ == "__main__":
+#     main()
