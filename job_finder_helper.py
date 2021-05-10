@@ -81,9 +81,7 @@ def wav2txt(audioFileName):
     if userCommand.find('recent ') > -1:
         userCommand = userCommand[(userCommand.find('recent ') + 7):]
 
-    txtFile = open("audioAsText.txt", "w+")
-    txtFile.write(userCommand)
-    txtFile.close()
+   
     return userCommand
 
 # End wav to text
