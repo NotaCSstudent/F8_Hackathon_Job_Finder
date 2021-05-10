@@ -7,16 +7,14 @@ from pydub import AudioSegment
 from flask import Flask, request, abort
 import job_finder_helper as jfh
 
-
 app = Flask(__name__)
 
-# Install ffmpeg on host/server
 
-# Send a response back to the user
 PAGE_ACCESS_TOKEN = 'EAACMn1ZClEwMBAMP3Mwd434nGLaoyzKFaAcZA1zcJQtTGPjdHLuR36S37TEm9ecl9hIThn1Rbm2eqR3RXE2k7YrpUZBXfjuGtrb6V8zptVo2pZBbvZBTwWquuk6idxR187PhcZC3PnK6ZAOZB8kZAW8YUGhVTW1c3868mVc2KHrC08dxXjy4ZC4uYZC0mD49z5BOgURMg1WLMZBhVNVyA9D04ZAWG'
 
 
-def send_message(recipient_id, text):
+# Send a response back to the user
+def sendListOfJobs(recipient_id, text):
 
     elementsList = []
 
@@ -54,6 +52,7 @@ def send_message(recipient_id, text):
     return response.json()
 
 
+# Converting messenger sent audio to .wav format on MACOS
 def messengerClipToWavMac(audioFileName):
     file = AudioSegment.from_file('/'+audioFileName, format="mp4")
     output = file.export("/output.wav", format="wav")
@@ -64,36 +63,34 @@ def messengerClipToWav(audioFileName):
     output = file.export("./output.wav", format="wav")
 
 
-@app.route('/test')
+@app.route('/verify')
 def webhook():
-    VERIFY_TOKEN = "test"
+    VERIFY_TOKEN = "token_verification_f8_hackathon"
     mode = request.args.get('hub.mode')
     token = request.args.get('hub.verify_token')
     challenge = request.args.get('hub.challenge')
 
     if mode and token:
         if mode == 'subscribe' and token == VERIFY_TOKEN:
-            print("Worked")
             return challenge
 
     return 'success', 200
 
 
-@app.route('/test', methods=['POST'])
+@app.route('/message', methods=['POST'])
 def handleMessage():
     if request.method == 'POST':
-        # print(request.json)
         attachmentType = request.json["entry"][0]["messaging"][0]["message"]["attachments"][0]["type"]
         senderId = request.json["entry"][0]["messaging"][0]["sender"]["id"]
         if attachmentType == "audio":
             attachmentUrl = request.json["entry"][0]["messaging"][0]["message"]["attachments"][0]["payload"]["url"]
+            # Download the audio file sent from messenger
             urllib.request.urlretrieve(attachmentUrl, "input.mp4")
             messengerClipToWav("input.mp4")
             job = jfh.wav2txt("output.wav")
-            print(job)
             listOfJobs = jfh.Find_My_Job(job)
-            print(listOfJobs)
-            print(send_message(senderId, listOfJobs))
+            sendListOfJobs(senderId, listOfJobs)  # Send list of jobs to user.
+            # print(sendListOfJobs(senderId, listOfJobs)) # Debug to check if message was sent successfully
 
         return 'success', 200
     else:

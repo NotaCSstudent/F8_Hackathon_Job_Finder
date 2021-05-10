@@ -4,7 +4,6 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-
 # Begin Job Finder
 
 
@@ -28,9 +27,6 @@ def Find_Job(Job_Response, Number_Of_Jobs: int):
 
     Name = Name_Finder.h2.a
 
-    # Company_Name = Job_Soup.find_all(
-    #     'span', 'company')  # Finds company html tag
-
     # Gets the company name and strips out anything thats not needed
     Company = Name_Finder.find('span', 'company').text.strip()
 
@@ -43,15 +39,6 @@ def Find_Job(Job_Response, Number_Of_Jobs: int):
     Details = {"name": Name['title'], "company": Company, "location": Location}
     return (Details)
 
-
-#print(len(Find_Job("Software Engineer")))
-##First_Job = Find_Job("Software Engineer",1)
-# print(len(First_Job))
-# print(First_Job[0])
-# print(First_Job[0].h2)
-# print(First_Job[0].h2.a)
-#Tag = First_Job[0].h2.a
-# print(Tag['title'])
 
 headers = [{'User-Agent': 'Mozilla/5.0'}]
 
@@ -71,19 +58,10 @@ def Find_My_Job(Insert_Job: str):
             pass
     return Job_List
 
-    # Use this to skip any Index Errors
-##Find_My_Job("Software Engineer")
-##Find_My_Job("Data Analyst")
-# Find_My_Job("Janitor")
-# Find_My_Job("Tutor")
-
-
 # End Job Finder
 
 
 # Begin wav to text
-
-
 def wav2txt(audioFileName):
     reco = sr.Recognizer()
     reco.energy_threshold = 300
@@ -109,13 +87,3 @@ def wav2txt(audioFileName):
     return userCommand
 
 # End wav to text
-
-
-# def main():
-#     audFile = input("Enter audio file name: ")
-
-#     wav2txt(audFile)
-
-
-# if __name__ == "__main__":
-#     main()

@@ -24,7 +24,7 @@ and will find the seven most recent job postings on Indeed in New York City and 
 
 - To run the application, run the following command:
     ```
-    python3 app.py
+    python3 main.py
     ```
     
 ## Commands
