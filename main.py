@@ -63,7 +63,7 @@ def messengerClipToWav(audioFileName):
     output = file.export("./output.wav", format="wav")
 
 
-@app.route('/verify')
+@app.route('/message')
 def webhook():
     VERIFY_TOKEN = "token_verification_f8_hackathon"
     mode = request.args.get('hub.mode')
