@@ -52,6 +52,7 @@ def Find_My_Job(Insert_Job: str):
 
     for i in range(1, 15):
         try:
+            print(Insert_Job)
             Job_List.append(Find_Job(Job_Response, i))
             # print(Find_Job(Insert_Job, i))
         except(IndexError):
