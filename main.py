@@ -89,8 +89,9 @@ def handleMessage():
             messengerClipToWav("input.mp4")
             job = jfh.wav2txt("output.wav")
             listOfJobs = jfh.Find_My_Job(job)
-            sendListOfJobs(senderId, listOfJobs)  # Send list of jobs to user.
-            # print(sendListOfJobs(senderId, listOfJobs)) # Debug to check if message was sent successfully
+            # sendListOfJobs(senderId, listOfJobs)  # Send list of jobs to user.
+            # Debug to check if message was sent successfully
+            print(sendListOfJobs(senderId, listOfJobs))
 
         return 'success', 200
     else:
