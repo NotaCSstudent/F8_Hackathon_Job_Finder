@@ -90,7 +90,9 @@ def handleMessage():
             urllib.request.urlretrieve(attachmentUrl, "input.mp4")
             messengerClipToWav("input.mp4")
             job = jfh.wav2txt("output.wav")
+            print(job)
             listOfJobs = jfh.Find_My_Job(job)
+            print(listOfJobs)
             print(send_message(senderId, listOfJobs))
 
         return 'success', 200

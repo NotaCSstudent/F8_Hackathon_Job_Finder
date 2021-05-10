@@ -16,11 +16,7 @@ def Get_Url(Job: str):
     return Url
 
 
-def Find_Job(Job: str, Number_Of_Jobs: int):
-
-    Job_Url = Get_Url(Job)  # For the Helper Function Above
-
-    Job_Response = requests.get(Job_Url)  # Getting a Response from the URL
+def Find_Job(Job_Response, Number_Of_Jobs: int):
 
     # Parses into an HTML Tree Structure
     Job_Soup = BeautifulSoup(Job_Response.text, "html.parser")
@@ -32,8 +28,8 @@ def Find_Job(Job: str, Number_Of_Jobs: int):
 
     Name = Name_Finder.h2.a
 
-    Company_Name = Job_Soup.find_all(
-        'span', 'company')  # Finds company html tag
+    # Company_Name = Job_Soup.find_all(
+    #     'span', 'company')  # Finds company html tag
 
     # Gets the company name and strips out anything thats not needed
     Company = Name_Finder.find('span', 'company').text.strip()
@@ -57,12 +53,19 @@ def Find_Job(Job: str, Number_Of_Jobs: int):
 #Tag = First_Job[0].h2.a
 # print(Tag['title'])
 
+headers = [{'User-Agent': 'Mozilla/5.0'}]
+
 
 def Find_My_Job(Insert_Job: str):
     Job_List = []
+
+    Job_Url = Get_Url(Insert_Job)  # For the Helper Function Above
+
+    Job_Response = requests.get(Job_Url)  # Getting a Response from the URL
+
     for i in range(1, 15):
         try:
-            Job_List.append(Find_Job(Insert_Job, i))
+            Job_List.append(Find_Job(Job_Response, i))
             # print(Find_Job(Insert_Job, i))
         except(IndexError):
             pass
@@ -72,7 +75,7 @@ def Find_My_Job(Insert_Job: str):
 ##Find_My_Job("Software Engineer")
 ##Find_My_Job("Data Analyst")
 # Find_My_Job("Janitor")
-Find_My_Job("Tutor")
+# Find_My_Job("Tutor")
 
 
 # End Job Finder
@@ -90,7 +93,8 @@ def wav2txt(audioFileName):
     with givenAudioFile as srcFile:
         givenAudioFile = reco.record(srcFile)
 
-    userCommand = reco.recognize_wit(givenAudioFile, "O7NTCSR3OEK6VZOGW4I65N6P5OTKSI3C")
+    userCommand = reco.recognize_wit(
+        givenAudioFile, "O7NTCSR3OEK6VZOGW4I65N6P5OTKSI3C")
     if userCommand.find(' in') > -1:
         userCommand = userCommand[(userCommand.find('looking for ') + 12):]
         userCommand = userCommand[:userCommand.find(' in')]
